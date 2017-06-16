@@ -1,53 +1,47 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
+ * React Native Redux Example
+ * https://github.com/aaronvb/react-native-redux-example
  */
 
-import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import React, { Component } from "react";
+import { Provider } from "react-redux";
+import { applyMiddleware, createStore } from "redux";
+import logger from "redux-logger";
+import { AppRegistry, StyleSheet, View, StatusBar } from "react-native";
 
-export default class ReduxExample extends Component {
+import itemApp from "./reducers";
+import Header from "./components/Header";
+import ItemList from "./components/ItemList";
+
+// Create store with logger.
+// Use Cmd + D to open developer menu to start debugger
+const store = createStore(itemApp, applyMiddleware(logger));
+
+class ReduxExample extends Component {
+  componentDidMount() {
+    // Set status bar text to white
+    StatusBar.setHidden(false);
+    StatusBar.setBarStyle("light-content");
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
+      <Provider store={store}>
+        <View style={styles.container}>
+          <Header />
+          <ItemList />
+        </View>
+      </Provider>
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+    flex: 1
+  }
 });
 
-AppRegistry.registerComponent('ReduxExample', () => ReduxExample);
+export default ReduxExample;
+
+AppRegistry.registerComponent("ReduxExample", () => ReduxExample);
