@@ -1,5 +1,5 @@
 # React Native Redux Example
-This is the simplest and minimal way to integrate Redux into a React Native project. Based on the examples in the Redux docs. Also included in the example is a ListView that uses the Redux store.
+This is a simple and minimal way to integrate Redux into a React Native project - based on the examples in the Redux docs. Also included in the example is a ListView that uses the Redux store.
 
 ## Features
 - ListView and Redux example
