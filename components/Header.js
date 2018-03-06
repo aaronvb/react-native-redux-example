@@ -60,16 +60,8 @@ const styles = StyleSheet.create({
   header: {
     flex: 1,
     flexDirection: "row",
-    justifyContent: "space-between"
-  },
-  left: {
-    top: 40
-  },
-  middle: {
-    top: 40
-  },
-  right: {
-    top: 40
+    justifyContent: "space-between",
+    alignItems: "center"
   },
   textRight: {
     color: "#efefef",
